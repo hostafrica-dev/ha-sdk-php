@@ -1,5 +1,6 @@
 {
     "name": "hostafrica/ha-sdk-php",
+    "version": "1.0.8",
     "description": "HostAfrica API",
     "keywords": [
         "openapitools",
