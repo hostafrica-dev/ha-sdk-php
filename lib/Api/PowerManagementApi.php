@@ -904,7 +904,7 @@ class PowerManagementApi
      *
      * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HostAfrica\SDK\Model\ListPowerTasksResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
+     * @return \HostAfrica\SDK\Model\ListPowerTasksResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
      */
     public function listPowerTasks($list_power_tasks_request_content, string $contentType = self::contentTypes['listPowerTasks'][0])
     {
@@ -920,7 +920,7 @@ class PowerManagementApi
      *
      * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HostAfrica\SDK\Model\ListPowerTasksResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HostAfrica\SDK\Model\ListPowerTasksResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
      */
     public function listPowerTasksWithHttpInfo($list_power_tasks_request_content, string $contentType = self::contentTypes['listPowerTasks'][0])
     {
@@ -977,6 +977,12 @@ class PowerManagementApi
                 case 404:
                     return $this->handleResponseWithDataType(
                         '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
                         $request,
                         $response,
                     );
@@ -1058,6 +1064,14 @@ class PowerManagementApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
