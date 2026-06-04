@@ -895,7 +895,7 @@ class FirewallApi
      *
      * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return \HostAfrica\SDK\Model\ListFirewallRulesResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
+     * @return \HostAfrica\SDK\Model\ListFirewallRulesResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
      */
     public function listFirewallRules($list_firewall_rules_request_content, string $contentType = self::contentTypes['listFirewallRules'][0])
     {
@@ -911,7 +911,7 @@ class FirewallApi
      *
      * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
-     * @return array of \HostAfrica\SDK\Model\ListFirewallRulesResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \HostAfrica\SDK\Model\ListFirewallRulesResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
      */
     public function listFirewallRulesWithHttpInfo($list_firewall_rules_request_content, string $contentType = self::contentTypes['listFirewallRules'][0])
     {
@@ -968,6 +968,12 @@ class FirewallApi
                 case 404:
                     return $this->handleResponseWithDataType(
                         '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
                         $request,
                         $response,
                     );
@@ -1049,6 +1055,14 @@ class FirewallApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
