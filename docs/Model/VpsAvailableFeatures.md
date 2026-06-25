@@ -18,6 +18,5 @@ Name | Type | Description | Notes
 **change_iso_image** | **bool** | Can change ISO image |
 **network_stats** | **bool** | Has network statistics feature |
 **graphs** | **bool** | Has graphs feature |
-**os_templates** | **string[]** | List of available OS templates |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

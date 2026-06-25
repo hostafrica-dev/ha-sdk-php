@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  HostAfrica\\SDK
+ * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace HostAfrica\\SDK\Test\Model;
+namespace HostAfrica\SDK\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description VpsDetailsResponse
- * @package     HostAfrica\\SDK
+ * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
@@ -119,15 +119,6 @@ class VpsDetailsResponseTest extends TestCase
      * Test attribute "disk"
      */
     public function testPropertyDisk()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "bandwidth"
-     */
-    public function testPropertyBandwidth()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **cpu** | [**\HostAfrica\SDK\Model\VpsCpuInfo**](VpsCpuInfo.md) |  |
 **memory** | [**\HostAfrica\SDK\Model\VpsMemoryInfo**](VpsMemoryInfo.md) |  |
 **disk** | [**\HostAfrica\SDK\Model\VpsDiskInfo**](VpsDiskInfo.md) |  |
-**bandwidth** | [**\HostAfrica\SDK\Model\VpsBandwidthInfo**](VpsBandwidthInfo.md) |  |
 **network_rate** | [**\HostAfrica\SDK\Model\VpsNetworkRate**](VpsNetworkRate.md) |  | [optional]
 **ip_addresses** | **string[]** | List of IP addresses assigned to the VPS |
 **credentials** | [**\HostAfrica\SDK\Model\VpsCredentials**](VpsCredentials.md) |  |

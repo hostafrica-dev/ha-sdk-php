@@ -62,7 +62,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'cpu' => '\HostAfrica\SDK\Model\VpsCpuInfo',
         'memory' => '\HostAfrica\SDK\Model\VpsMemoryInfo',
         'disk' => '\HostAfrica\SDK\Model\VpsDiskInfo',
-        'bandwidth' => '\HostAfrica\SDK\Model\VpsBandwidthInfo',
         'network_rate' => '\HostAfrica\SDK\Model\VpsNetworkRate',
         'ip_addresses' => 'string[]',
         'credentials' => '\HostAfrica\SDK\Model\VpsCredentials',
@@ -83,7 +82,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'cpu' => null,
         'memory' => null,
         'disk' => null,
-        'bandwidth' => null,
         'network_rate' => null,
         'ip_addresses' => null,
         'credentials' => null,
@@ -102,7 +100,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'cpu' => false,
         'memory' => false,
         'disk' => false,
-        'bandwidth' => false,
         'network_rate' => false,
         'ip_addresses' => false,
         'credentials' => false,
@@ -201,7 +198,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'cpu' => 'cpu',
         'memory' => 'memory',
         'disk' => 'disk',
-        'bandwidth' => 'bandwidth',
         'network_rate' => 'network_rate',
         'ip_addresses' => 'ip_addresses',
         'credentials' => 'credentials',
@@ -220,7 +216,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'cpu' => 'setCpu',
         'memory' => 'setMemory',
         'disk' => 'setDisk',
-        'bandwidth' => 'setBandwidth',
         'network_rate' => 'setNetworkRate',
         'ip_addresses' => 'setIpAddresses',
         'credentials' => 'setCredentials',
@@ -239,7 +234,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         'cpu' => 'getCpu',
         'memory' => 'getMemory',
         'disk' => 'getDisk',
-        'bandwidth' => 'getBandwidth',
         'network_rate' => 'getNetworkRate',
         'ip_addresses' => 'getIpAddresses',
         'credentials' => 'getCredentials',
@@ -309,7 +303,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->setIfExists('cpu', $data ?? [], null);
         $this->setIfExists('memory', $data ?? [], null);
         $this->setIfExists('disk', $data ?? [], null);
-        $this->setIfExists('bandwidth', $data ?? [], null);
         $this->setIfExists('network_rate', $data ?? [], null);
         $this->setIfExists('ip_addresses', $data ?? [], null);
         $this->setIfExists('credentials', $data ?? [], null);
@@ -358,9 +351,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
         }
         if ($this->container['disk'] === null) {
             $invalidProperties[] = "'disk' can't be null";
-        }
-        if ($this->container['bandwidth'] === null) {
-            $invalidProperties[] = "'bandwidth' can't be null";
         }
         if ($this->container['ip_addresses'] === null) {
             $invalidProperties[] = "'ip_addresses' can't be null";
@@ -517,33 +507,6 @@ class VpsDetailsResponse implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable disk cannot be null');
         }
         $this->container['disk'] = $disk;
-
-        return $this;
-    }
-
-    /**
-     * Gets bandwidth
-     *
-     * @return \HostAfrica\SDK\Model\VpsBandwidthInfo
-     */
-    public function getBandwidth()
-    {
-        return $this->container['bandwidth'];
-    }
-
-    /**
-     * Sets bandwidth
-     *
-     * @param \HostAfrica\SDK\Model\VpsBandwidthInfo $bandwidth bandwidth
-     *
-     * @return self
-     */
-    public function setBandwidth($bandwidth)
-    {
-        if (is_null($bandwidth)) {
-            throw new \InvalidArgumentException('non-nullable bandwidth cannot be null');
-        }
-        $this->container['bandwidth'] = $bandwidth;
 
         return $this;
     }

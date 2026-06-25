@@ -71,8 +71,7 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         'change_hostname' => 'bool',
         'change_iso_image' => 'bool',
         'network_stats' => 'bool',
-        'graphs' => 'bool',
-        'os_templates' => 'string[]'
+        'graphs' => 'bool'
     ];
 
     /**
@@ -96,8 +95,7 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         'change_hostname' => null,
         'change_iso_image' => null,
         'network_stats' => null,
-        'graphs' => null,
-        'os_templates' => null
+        'graphs' => null
     ];
 
     /**
@@ -119,8 +117,7 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         'change_hostname' => false,
         'change_iso_image' => false,
         'network_stats' => false,
-        'graphs' => false,
-        'os_templates' => false
+        'graphs' => false
     ];
 
     /**
@@ -222,8 +219,7 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         'change_hostname' => 'change_hostname',
         'change_iso_image' => 'change_iso_image',
         'network_stats' => 'network_stats',
-        'graphs' => 'graphs',
-        'os_templates' => 'os_templates'
+        'graphs' => 'graphs'
     ];
 
     /**
@@ -245,8 +241,7 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         'change_hostname' => 'setChangeHostname',
         'change_iso_image' => 'setChangeIsoImage',
         'network_stats' => 'setNetworkStats',
-        'graphs' => 'setGraphs',
-        'os_templates' => 'setOsTemplates'
+        'graphs' => 'setGraphs'
     ];
 
     /**
@@ -268,8 +263,7 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         'change_hostname' => 'getChangeHostname',
         'change_iso_image' => 'getChangeIsoImage',
         'network_stats' => 'getNetworkStats',
-        'graphs' => 'getGraphs',
-        'os_templates' => 'getOsTemplates'
+        'graphs' => 'getGraphs'
     ];
 
     /**
@@ -343,7 +337,6 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         $this->setIfExists('change_iso_image', $data ?? [], null);
         $this->setIfExists('network_stats', $data ?? [], null);
         $this->setIfExists('graphs', $data ?? [], null);
-        $this->setIfExists('os_templates', $data ?? [], null);
     }
 
     /**
@@ -414,9 +407,6 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
         }
         if ($this->container['graphs'] === null) {
             $invalidProperties[] = "'graphs' can't be null";
-        }
-        if ($this->container['os_templates'] === null) {
-            $invalidProperties[] = "'os_templates' can't be null";
         }
         return $invalidProperties;
     }
@@ -807,33 +797,6 @@ class VpsAvailableFeatures implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable graphs cannot be null');
         }
         $this->container['graphs'] = $graphs;
-
-        return $this;
-    }
-
-    /**
-     * Gets os_templates
-     *
-     * @return string[]
-     */
-    public function getOsTemplates()
-    {
-        return $this->container['os_templates'];
-    }
-
-    /**
-     * Sets os_templates
-     *
-     * @param string[] $os_templates List of available OS templates
-     *
-     * @return self
-     */
-    public function setOsTemplates($os_templates)
-    {
-        if (is_null($os_templates)) {
-            throw new \InvalidArgumentException('non-nullable os_templates cannot be null');
-        }
-        $this->container['os_templates'] = $os_templates;
 
         return $this;
     }

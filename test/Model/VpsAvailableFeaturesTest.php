@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  HostAfrica\\SDK
+ * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace HostAfrica\\SDK\Test\Model;
+namespace HostAfrica\SDK\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description Available features for the VPS
- * @package     HostAfrica\\SDK
+ * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
@@ -200,15 +200,6 @@ class VpsAvailableFeaturesTest extends TestCase
      * Test attribute "graphs"
      */
     public function testPropertyGraphs()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "os_templates"
-     */
-    public function testPropertyOsTemplates()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

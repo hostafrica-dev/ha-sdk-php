@@ -58,11 +58,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var string[]
       */
     protected static $openAPITypes = [
-        'port' => 'string',
-        'upid' => 'string',
-        'user' => 'string',
-        'ticket' => 'string',
-        'cert' => 'string'
+        'novnc_redirect_url' => 'string'
     ];
 
     /**
@@ -73,11 +69,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'port' => null,
-        'upid' => null,
-        'user' => null,
-        'ticket' => null,
-        'cert' => null
+        'novnc_redirect_url' => null
     ];
 
     /**
@@ -86,11 +78,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'port' => false,
-        'upid' => false,
-        'user' => false,
-        'ticket' => false,
-        'cert' => false
+        'novnc_redirect_url' => false
     ];
 
     /**
@@ -179,11 +167,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $attributeMap = [
-        'port' => 'port',
-        'upid' => 'upid',
-        'user' => 'user',
-        'ticket' => 'ticket',
-        'cert' => 'cert'
+        'novnc_redirect_url' => 'novnc_redirect_url'
     ];
 
     /**
@@ -192,11 +176,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $setters = [
-        'port' => 'setPort',
-        'upid' => 'setUpid',
-        'user' => 'setUser',
-        'ticket' => 'setTicket',
-        'cert' => 'setCert'
+        'novnc_redirect_url' => 'setNovncRedirectUrl'
     ];
 
     /**
@@ -205,11 +185,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
      * @var string[]
      */
     protected static $getters = [
-        'port' => 'getPort',
-        'upid' => 'getUpid',
-        'user' => 'getUser',
-        'ticket' => 'getTicket',
-        'cert' => 'getCert'
+        'novnc_redirect_url' => 'getNovncRedirectUrl'
     ];
 
     /**
@@ -269,11 +245,7 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('port', $data ?? [], null);
-        $this->setIfExists('upid', $data ?? [], null);
-        $this->setIfExists('user', $data ?? [], null);
-        $this->setIfExists('ticket', $data ?? [], null);
-        $this->setIfExists('cert', $data ?? [], null);
+        $this->setIfExists('novnc_redirect_url', $data ?? [], null);
     }
 
     /**
@@ -303,20 +275,8 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
     {
         $invalidProperties = [];
 
-        if ($this->container['port'] === null) {
-            $invalidProperties[] = "'port' can't be null";
-        }
-        if ($this->container['upid'] === null) {
-            $invalidProperties[] = "'upid' can't be null";
-        }
-        if ($this->container['user'] === null) {
-            $invalidProperties[] = "'user' can't be null";
-        }
-        if ($this->container['ticket'] === null) {
-            $invalidProperties[] = "'ticket' can't be null";
-        }
-        if ($this->container['cert'] === null) {
-            $invalidProperties[] = "'cert' can't be null";
+        if ($this->container['novnc_redirect_url'] === null) {
+            $invalidProperties[] = "'novnc_redirect_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -334,136 +294,28 @@ class NoVncConsoleDetails implements ModelInterface, ArrayAccess, \JsonSerializa
 
 
     /**
-     * Gets port
+     * Gets novnc_redirect_url
      *
      * @return string
      */
-    public function getPort()
+    public function getNovncRedirectUrl()
     {
-        return $this->container['port'];
+        return $this->container['novnc_redirect_url'];
     }
 
     /**
-     * Sets port
+     * Sets novnc_redirect_url
      *
-     * @param string $port VNC port number
+     * @param string $novnc_redirect_url Redirect URL for the noVNC console
      *
      * @return self
      */
-    public function setPort($port)
+    public function setNovncRedirectUrl($novnc_redirect_url)
     {
-        if (is_null($port)) {
-            throw new \InvalidArgumentException('non-nullable port cannot be null');
+        if (is_null($novnc_redirect_url)) {
+            throw new \InvalidArgumentException('non-nullable novnc_redirect_url cannot be null');
         }
-        $this->container['port'] = $port;
-
-        return $this;
-    }
-
-    /**
-     * Gets upid
-     *
-     * @return string
-     */
-    public function getUpid()
-    {
-        return $this->container['upid'];
-    }
-
-    /**
-     * Sets upid
-     *
-     * @param string $upid Proxmox Unique Process ID for the VNC proxy
-     *
-     * @return self
-     */
-    public function setUpid($upid)
-    {
-        if (is_null($upid)) {
-            throw new \InvalidArgumentException('non-nullable upid cannot be null');
-        }
-        $this->container['upid'] = $upid;
-
-        return $this;
-    }
-
-    /**
-     * Gets user
-     *
-     * @return string
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param string $user Proxmox user for authentication
-     *
-     * @return self
-     */
-    public function setUser($user)
-    {
-        if (is_null($user)) {
-            throw new \InvalidArgumentException('non-nullable user cannot be null');
-        }
-        $this->container['user'] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Gets ticket
-     *
-     * @return string
-     */
-    public function getTicket()
-    {
-        return $this->container['ticket'];
-    }
-
-    /**
-     * Sets ticket
-     *
-     * @param string $ticket Authentication ticket for VNC connection
-     *
-     * @return self
-     */
-    public function setTicket($ticket)
-    {
-        if (is_null($ticket)) {
-            throw new \InvalidArgumentException('non-nullable ticket cannot be null');
-        }
-        $this->container['ticket'] = $ticket;
-
-        return $this;
-    }
-
-    /**
-     * Gets cert
-     *
-     * @return string
-     */
-    public function getCert()
-    {
-        return $this->container['cert'];
-    }
-
-    /**
-     * Sets cert
-     *
-     * @param string $cert Certificate for secure connection
-     *
-     * @return self
-     */
-    public function setCert($cert)
-    {
-        if (is_null($cert)) {
-            throw new \InvalidArgumentException('non-nullable cert cannot be null');
-        }
-        $this->container['cert'] = $cert;
+        $this->container['novnc_redirect_url'] = $novnc_redirect_url;
 
         return $this;
     }

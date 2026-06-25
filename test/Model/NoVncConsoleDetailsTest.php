@@ -5,7 +5,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  HostAfrica\\SDK
+ * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -26,7 +26,7 @@
  * Please update the test case below to test the model.
  */
 
-namespace HostAfrica\\SDK\Test\Model;
+namespace HostAfrica\SDK\Test\Model;
 
 use PHPUnit\Framework\TestCase;
 
@@ -35,7 +35,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @category    Class
  * @description noVNC console connection details
- * @package     HostAfrica\\SDK
+ * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
@@ -80,45 +80,9 @@ class NoVncConsoleDetailsTest extends TestCase
     }
 
     /**
-     * Test attribute "port"
+     * Test attribute "novnc_redirect_url"
      */
-    public function testPropertyPort()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "upid"
-     */
-    public function testPropertyUpid()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "user"
-     */
-    public function testPropertyUser()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "ticket"
-     */
-    public function testPropertyTicket()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "cert"
-     */
-    public function testPropertyCert()
+    public function testPropertyNovncRedirectUrl()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

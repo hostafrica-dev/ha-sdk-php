@@ -4,7 +4,7 @@
  * PHP version 8.1
  *
  * @category Class
- * @package  HostAfrica\\SDK
+ * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
@@ -25,18 +25,18 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace HostAfrica\\SDK\Test\Api;
+namespace HostAfrica\SDK\Test\Api;
 
-use \HostAfrica\\SDK\Configuration;
-use \HostAfrica\\SDK\ApiException;
-use \HostAfrica\\SDK\ObjectSerializer;
+use \HostAfrica\SDK\Configuration;
+use \HostAfrica\SDK\ApiException;
+use \HostAfrica\SDK\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
  * VPSManagementApiTest Class Doc Comment
  *
  * @category Class
- * @package  HostAfrica\\SDK
+ * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
