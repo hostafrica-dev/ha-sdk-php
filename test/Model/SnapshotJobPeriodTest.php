@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContentTest
+ * SnapshotJobPeriodTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace HostAfrica\SDK\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateSnapshotRequestContentTest Class Doc Comment
+ * SnapshotJobPeriodTest Class Doc Comment
  *
  * @category    Class
- * @description CreateSnapshotRequestContent
+ * @description Schedule period for snapshot jobs
  * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateSnapshotRequestContentTest extends TestCase
+class SnapshotJobPeriodTest extends TestCase
 {
 
     /**
@@ -71,45 +71,9 @@ class CreateSnapshotRequestContentTest extends TestCase
     }
 
     /**
-     * Test "CreateSnapshotRequestContent"
+     * Test "SnapshotJobPeriod"
      */
-    public function testCreateSnapshotRequestContent()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "service_id"
-     */
-    public function testPropertyServiceId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "description"
-     */
-    public function testPropertyDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "include_ram"
-     */
-    public function testPropertyIncludeRam()
+    public function testSnapshotJobPeriod()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

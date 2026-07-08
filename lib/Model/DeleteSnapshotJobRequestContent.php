@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContent
+ * DeleteSnapshotJobRequestContent
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HostAfrica\SDK\ObjectSerializer;
 
 /**
- * CreateSnapshotRequestContent Class Doc Comment
+ * DeleteSnapshotJobRequestContent Class Doc Comment
  *
  * @category Class
  * @package  HostAfrica\SDK
@@ -40,7 +40,7 @@ use \HostAfrica\SDK\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
+class DeleteSnapshotJobRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateSnapshotRequestContent';
+    protected static $openAPIModelName = 'DeleteSnapshotJobRequestContent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +58,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPITypes = [
         'service_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'include_ram' => 'bool'
+        'job_id' => 'string'
     ];
 
     /**
@@ -72,9 +70,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       */
     protected static $openAPIFormats = [
         'service_id' => null,
-        'name' => null,
-        'description' => null,
-        'include_ram' => null
+        'job_id' => null
     ];
 
     /**
@@ -84,9 +80,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       */
     protected static array $openAPINullables = [
         'service_id' => false,
-        'name' => false,
-        'description' => false,
-        'include_ram' => false
+        'job_id' => false
     ];
 
     /**
@@ -176,9 +170,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      */
     protected static $attributeMap = [
         'service_id' => 'service_id',
-        'name' => 'name',
-        'description' => 'description',
-        'include_ram' => 'include_ram'
+        'job_id' => 'job_id'
     ];
 
     /**
@@ -188,9 +180,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      */
     protected static $setters = [
         'service_id' => 'setServiceId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'include_ram' => 'setIncludeRam'
+        'job_id' => 'setJobId'
     ];
 
     /**
@@ -200,9 +190,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      */
     protected static $getters = [
         'service_id' => 'getServiceId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'include_ram' => 'getIncludeRam'
+        'job_id' => 'getJobId'
     ];
 
     /**
@@ -263,9 +251,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('service_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('include_ram', $data ?? [], null);
+        $this->setIfExists('job_id', $data ?? [], null);
     }
 
     /**
@@ -298,8 +284,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         if ($this->container['service_id'] === null) {
             $invalidProperties[] = "'service_id' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['job_id'] === null) {
+            $invalidProperties[] = "'job_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -344,82 +330,28 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets name
+     * Gets job_id
      *
      * @return string
      */
-    public function getName()
+    public function getJobId()
     {
-        return $this->container['name'];
+        return $this->container['job_id'];
     }
 
     /**
-     * Sets name
+     * Sets job_id
      *
-     * @param string $name Name for the snapshot
+     * @param string $job_id Snapshot job ID to delete
      *
      * @return self
      */
-    public function setName($name)
+    public function setJobId($job_id)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($job_id)) {
+            throw new \InvalidArgumentException('non-nullable job_id cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Description for the snapshot
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_ram
-     *
-     * @return bool|null
-     */
-    public function getIncludeRam()
-    {
-        return $this->container['include_ram'];
-    }
-
-    /**
-     * Sets include_ram
-     *
-     * @param bool|null $include_ram Whether to include RAM state in the snapshot. Defaults to false when omitted.
-     *
-     * @return self
-     */
-    public function setIncludeRam($include_ram)
-    {
-        if (is_null($include_ram)) {
-            throw new \InvalidArgumentException('non-nullable include_ram cannot be null');
-        }
-        $this->container['include_ram'] = $include_ram;
+        $this->container['job_id'] = $job_id;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContent
+ * CreateSnapshotJobRequestContent
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HostAfrica\SDK\ObjectSerializer;
 
 /**
- * CreateSnapshotRequestContent Class Doc Comment
+ * CreateSnapshotJobRequestContent Class Doc Comment
  *
  * @category Class
  * @package  HostAfrica\SDK
@@ -40,7 +40,7 @@ use \HostAfrica\SDK\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
+class CreateSnapshotJobRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateSnapshotRequestContent';
+    protected static $openAPIModelName = 'CreateSnapshotJobRequestContent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,7 +60,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         'service_id' => 'string',
         'name' => 'string',
         'description' => 'string',
-        'include_ram' => 'bool'
+        'vmstate' => 'bool',
+        'period' => '\HostAfrica\SDK\Model\SnapshotJobPeriod',
+        'run_every' => 'int',
+        'days' => '\HostAfrica\SDK\Model\DayOfWeek[]',
+        'start_time' => 'string'
     ];
 
     /**
@@ -74,7 +78,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         'service_id' => null,
         'name' => null,
         'description' => null,
-        'include_ram' => null
+        'vmstate' => null,
+        'period' => null,
+        'run_every' => 'int32',
+        'days' => null,
+        'start_time' => null
     ];
 
     /**
@@ -86,7 +94,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         'service_id' => false,
         'name' => false,
         'description' => false,
-        'include_ram' => false
+        'vmstate' => false,
+        'period' => false,
+        'run_every' => false,
+        'days' => false,
+        'start_time' => false
     ];
 
     /**
@@ -178,7 +190,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         'service_id' => 'service_id',
         'name' => 'name',
         'description' => 'description',
-        'include_ram' => 'include_ram'
+        'vmstate' => 'vmstate',
+        'period' => 'period',
+        'run_every' => 'run_every',
+        'days' => 'days',
+        'start_time' => 'start_time'
     ];
 
     /**
@@ -190,7 +206,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         'service_id' => 'setServiceId',
         'name' => 'setName',
         'description' => 'setDescription',
-        'include_ram' => 'setIncludeRam'
+        'vmstate' => 'setVmstate',
+        'period' => 'setPeriod',
+        'run_every' => 'setRunEvery',
+        'days' => 'setDays',
+        'start_time' => 'setStartTime'
     ];
 
     /**
@@ -202,7 +222,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         'service_id' => 'getServiceId',
         'name' => 'getName',
         'description' => 'getDescription',
-        'include_ram' => 'getIncludeRam'
+        'vmstate' => 'getVmstate',
+        'period' => 'getPeriod',
+        'run_every' => 'getRunEvery',
+        'days' => 'getDays',
+        'start_time' => 'getStartTime'
     ];
 
     /**
@@ -265,7 +289,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         $this->setIfExists('service_id', $data ?? [], null);
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('include_ram', $data ?? [], null);
+        $this->setIfExists('vmstate', $data ?? [], null);
+        $this->setIfExists('period', $data ?? [], null);
+        $this->setIfExists('run_every', $data ?? [], null);
+        $this->setIfExists('days', $data ?? [], null);
+        $this->setIfExists('start_time', $data ?? [], null);
     }
 
     /**
@@ -301,6 +329,13 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['period'] === null) {
+            $invalidProperties[] = "'period' can't be null";
+        }
+        if (!is_null($this->container['start_time']) && !preg_match("/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/", $this->container['start_time'])) {
+            $invalidProperties[] = "invalid value for 'start_time', must be conform to the pattern /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.";
+        }
+
         return $invalidProperties;
     }
 
@@ -356,7 +391,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets name
      *
-     * @param string $name Name for the snapshot
+     * @param string $name Name for the snapshot job (e.g. 'auto_hourly')
      *
      * @return self
      */
@@ -383,7 +418,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     /**
      * Sets description
      *
-     * @param string|null $description Description for the snapshot
+     * @param string|null $description Description for the snapshot job
      *
      * @return self
      */
@@ -398,28 +433,141 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     }
 
     /**
-     * Gets include_ram
+     * Gets vmstate
      *
      * @return bool|null
      */
-    public function getIncludeRam()
+    public function getVmstate()
     {
-        return $this->container['include_ram'];
+        return $this->container['vmstate'];
     }
 
     /**
-     * Sets include_ram
+     * Sets vmstate
      *
-     * @param bool|null $include_ram Whether to include RAM state in the snapshot. Defaults to false when omitted.
+     * @param bool|null $vmstate Whether to include VM state in the snapshot
      *
      * @return self
      */
-    public function setIncludeRam($include_ram)
+    public function setVmstate($vmstate)
     {
-        if (is_null($include_ram)) {
-            throw new \InvalidArgumentException('non-nullable include_ram cannot be null');
+        if (is_null($vmstate)) {
+            throw new \InvalidArgumentException('non-nullable vmstate cannot be null');
         }
-        $this->container['include_ram'] = $include_ram;
+        $this->container['vmstate'] = $vmstate;
+
+        return $this;
+    }
+
+    /**
+     * Gets period
+     *
+     * @return \HostAfrica\SDK\Model\SnapshotJobPeriod
+     */
+    public function getPeriod()
+    {
+        return $this->container['period'];
+    }
+
+    /**
+     * Sets period
+     *
+     * @param \HostAfrica\SDK\Model\SnapshotJobPeriod $period period
+     *
+     * @return self
+     */
+    public function setPeriod($period)
+    {
+        if (is_null($period)) {
+            throw new \InvalidArgumentException('non-nullable period cannot be null');
+        }
+        $this->container['period'] = $period;
+
+        return $this;
+    }
+
+    /**
+     * Gets run_every
+     *
+     * @return int|null
+     */
+    public function getRunEvery()
+    {
+        return $this->container['run_every'];
+    }
+
+    /**
+     * Sets run_every
+     *
+     * @param int|null $run_every For hourly jobs: run every N hours (e.g. 6 = every 6 hours)
+     *
+     * @return self
+     */
+    public function setRunEvery($run_every)
+    {
+        if (is_null($run_every)) {
+            throw new \InvalidArgumentException('non-nullable run_every cannot be null');
+        }
+        $this->container['run_every'] = $run_every;
+
+        return $this;
+    }
+
+    /**
+     * Gets days
+     *
+     * @return \HostAfrica\SDK\Model\DayOfWeek[]|null
+     */
+    public function getDays()
+    {
+        return $this->container['days'];
+    }
+
+    /**
+     * Sets days
+     *
+     * @param \HostAfrica\SDK\Model\DayOfWeek[]|null $days For daily jobs: days of week when the job should run
+     *
+     * @return self
+     */
+    public function setDays($days)
+    {
+        if (is_null($days)) {
+            throw new \InvalidArgumentException('non-nullable days cannot be null');
+        }
+        $this->container['days'] = $days;
+
+        return $this;
+    }
+
+    /**
+     * Gets start_time
+     *
+     * @return string|null
+     */
+    public function getStartTime()
+    {
+        return $this->container['start_time'];
+    }
+
+    /**
+     * Sets start_time
+     *
+     * @param string|null $start_time For daily jobs: start time in HH:MM format (e.g. '02:30')
+     *
+     * @return self
+     */
+    public function setStartTime($start_time)
+    {
+        if (is_null($start_time)) {
+            throw new \InvalidArgumentException('non-nullable start_time cannot be null');
+        }
+
+        if ((!preg_match("/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/", ObjectSerializer::toString($start_time)))) {
+            throw new \InvalidArgumentException("invalid value for \$start_time when calling CreateSnapshotJobRequestContent., must conform to the pattern /^([01]?[0-9]|2[0-3]):[0-5][0-9]$/.");
+        }
+
+        $this->container['start_time'] = $start_time;
 
         return $this;
     }

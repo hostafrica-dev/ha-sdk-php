@@ -204,7 +204,7 @@ listReinstallOs($list_reinstall_os_request_content): \HostAfrica\SDK\Model\ListR
 
 
 
-[Under development] Retrieves the list of available OS images for VPS reinstallation
+Retrieves the list of available OS images for VPS reinstallation
 
 ### Example
 

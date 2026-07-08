@@ -52,6 +52,8 @@ docs/Model/CreatePowerTaskResponseContent.md
 docs/Model/CreateRdnsRecordRequestContent.md
 docs/Model/CreateRdnsRecordResponseContent.md
 docs/Model/CreateRdnsRecordResponseData.md
+docs/Model/CreateSnapshotJobRequestContent.md
+docs/Model/CreateSnapshotJobResponseContent.md
 docs/Model/CreateSnapshotRequestContent.md
 docs/Model/CreateSnapshotResponseContent.md
 docs/Model/DayOfWeek.md
@@ -67,6 +69,8 @@ docs/Model/DeletePowerTaskRequestContent.md
 docs/Model/DeletePowerTaskResponseContent.md
 docs/Model/DeleteRdnsRecordRequestContent.md
 docs/Model/DeleteRdnsRecordResponseContent.md
+docs/Model/DeleteSnapshotJobRequestContent.md
+docs/Model/DeleteSnapshotJobResponseContent.md
 docs/Model/DeleteSnapshotRequestContent.md
 docs/Model/DeleteSnapshotResponseContent.md
 docs/Model/EditBackupScheduleRequestContent.md
@@ -109,6 +113,8 @@ docs/Model/ListRdnsResponseData.md
 docs/Model/ListReinstallOsRequestContent.md
 docs/Model/ListReinstallOsResponseContent.md
 docs/Model/ListReinstallOsResponseData.md
+docs/Model/ListSnapshotJobsRequestContent.md
+docs/Model/ListSnapshotJobsResponseContent.md
 docs/Model/ListSnapshotsRequestContent.md
 docs/Model/ListSnapshotsResponseContent.md
 docs/Model/ListVpsServicesData.md
@@ -157,6 +163,13 @@ docs/Model/ShutdownVpsRequestContent.md
 docs/Model/ShutdownVpsResponseContent.md
 docs/Model/SnapshotCreateResponseData.md
 docs/Model/SnapshotItem.md
+docs/Model/SnapshotJob.md
+docs/Model/SnapshotJobDeleteResponseData.md
+docs/Model/SnapshotJobLimits.md
+docs/Model/SnapshotJobListResponseData.md
+docs/Model/SnapshotJobMutationResponseData.md
+docs/Model/SnapshotJobPeriod.md
+docs/Model/SnapshotJobUpdateResponseData.md
 docs/Model/StartVpsRequestContent.md
 docs/Model/StartVpsResponseContent.md
 docs/Model/StopVpsRequestContent.md
@@ -172,6 +185,8 @@ docs/Model/UpdateNotificationRequestContent.md
 docs/Model/UpdateNotificationResponseContent.md
 docs/Model/UpdatePowerTaskRequestContent.md
 docs/Model/UpdatePowerTaskResponseContent.md
+docs/Model/UpdateSnapshotJobRequestContent.md
+docs/Model/UpdateSnapshotJobResponseContent.md
 docs/Model/UpdateSnapshotRequestContent.md
 docs/Model/UpdateSnapshotResponseContent.md
 docs/Model/UpdateVpsConfigRequestContent.md
@@ -262,6 +277,8 @@ lib/Model/CreatePowerTaskResponseContent.php
 lib/Model/CreateRdnsRecordRequestContent.php
 lib/Model/CreateRdnsRecordResponseContent.php
 lib/Model/CreateRdnsRecordResponseData.php
+lib/Model/CreateSnapshotJobRequestContent.php
+lib/Model/CreateSnapshotJobResponseContent.php
 lib/Model/CreateSnapshotRequestContent.php
 lib/Model/CreateSnapshotResponseContent.php
 lib/Model/DayOfWeek.php
@@ -277,6 +294,8 @@ lib/Model/DeletePowerTaskRequestContent.php
 lib/Model/DeletePowerTaskResponseContent.php
 lib/Model/DeleteRdnsRecordRequestContent.php
 lib/Model/DeleteRdnsRecordResponseContent.php
+lib/Model/DeleteSnapshotJobRequestContent.php
+lib/Model/DeleteSnapshotJobResponseContent.php
 lib/Model/DeleteSnapshotRequestContent.php
 lib/Model/DeleteSnapshotResponseContent.php
 lib/Model/EditBackupScheduleRequestContent.php
@@ -319,6 +338,8 @@ lib/Model/ListRdnsResponseData.php
 lib/Model/ListReinstallOsRequestContent.php
 lib/Model/ListReinstallOsResponseContent.php
 lib/Model/ListReinstallOsResponseData.php
+lib/Model/ListSnapshotJobsRequestContent.php
+lib/Model/ListSnapshotJobsResponseContent.php
 lib/Model/ListSnapshotsRequestContent.php
 lib/Model/ListSnapshotsResponseContent.php
 lib/Model/ListVpsServicesData.php
@@ -368,6 +389,13 @@ lib/Model/ShutdownVpsRequestContent.php
 lib/Model/ShutdownVpsResponseContent.php
 lib/Model/SnapshotCreateResponseData.php
 lib/Model/SnapshotItem.php
+lib/Model/SnapshotJob.php
+lib/Model/SnapshotJobDeleteResponseData.php
+lib/Model/SnapshotJobLimits.php
+lib/Model/SnapshotJobListResponseData.php
+lib/Model/SnapshotJobMutationResponseData.php
+lib/Model/SnapshotJobPeriod.php
+lib/Model/SnapshotJobUpdateResponseData.php
 lib/Model/StartVpsRequestContent.php
 lib/Model/StartVpsResponseContent.php
 lib/Model/StopVpsRequestContent.php
@@ -383,6 +411,8 @@ lib/Model/UpdateNotificationRequestContent.php
 lib/Model/UpdateNotificationResponseContent.php
 lib/Model/UpdatePowerTaskRequestContent.php
 lib/Model/UpdatePowerTaskResponseContent.php
+lib/Model/UpdateSnapshotJobRequestContent.php
+lib/Model/UpdateSnapshotJobResponseContent.php
 lib/Model/UpdateSnapshotRequestContent.php
 lib/Model/UpdateSnapshotResponseContent.php
 lib/Model/UpdateVpsConfigRequestContent.php
@@ -470,6 +500,8 @@ test/Model/CreatePowerTaskResponseContentTest.php
 test/Model/CreateRdnsRecordRequestContentTest.php
 test/Model/CreateRdnsRecordResponseContentTest.php
 test/Model/CreateRdnsRecordResponseDataTest.php
+test/Model/CreateSnapshotJobRequestContentTest.php
+test/Model/CreateSnapshotJobResponseContentTest.php
 test/Model/CreateSnapshotRequestContentTest.php
 test/Model/CreateSnapshotResponseContentTest.php
 test/Model/DayOfWeekTest.php
@@ -485,6 +517,8 @@ test/Model/DeletePowerTaskRequestContentTest.php
 test/Model/DeletePowerTaskResponseContentTest.php
 test/Model/DeleteRdnsRecordRequestContentTest.php
 test/Model/DeleteRdnsRecordResponseContentTest.php
+test/Model/DeleteSnapshotJobRequestContentTest.php
+test/Model/DeleteSnapshotJobResponseContentTest.php
 test/Model/DeleteSnapshotRequestContentTest.php
 test/Model/DeleteSnapshotResponseContentTest.php
 test/Model/EditBackupScheduleRequestContentTest.php
@@ -527,6 +561,8 @@ test/Model/ListRdnsResponseDataTest.php
 test/Model/ListReinstallOsRequestContentTest.php
 test/Model/ListReinstallOsResponseContentTest.php
 test/Model/ListReinstallOsResponseDataTest.php
+test/Model/ListSnapshotJobsRequestContentTest.php
+test/Model/ListSnapshotJobsResponseContentTest.php
 test/Model/ListSnapshotsRequestContentTest.php
 test/Model/ListSnapshotsResponseContentTest.php
 test/Model/ListVpsServicesDataTest.php
@@ -575,6 +611,13 @@ test/Model/ShutdownVpsRequestContentTest.php
 test/Model/ShutdownVpsResponseContentTest.php
 test/Model/SnapshotCreateResponseDataTest.php
 test/Model/SnapshotItemTest.php
+test/Model/SnapshotJobDeleteResponseDataTest.php
+test/Model/SnapshotJobLimitsTest.php
+test/Model/SnapshotJobListResponseDataTest.php
+test/Model/SnapshotJobMutationResponseDataTest.php
+test/Model/SnapshotJobPeriodTest.php
+test/Model/SnapshotJobTest.php
+test/Model/SnapshotJobUpdateResponseDataTest.php
 test/Model/StartVpsRequestContentTest.php
 test/Model/StartVpsResponseContentTest.php
 test/Model/StopVpsRequestContentTest.php
@@ -590,6 +633,8 @@ test/Model/UpdateNotificationRequestContentTest.php
 test/Model/UpdateNotificationResponseContentTest.php
 test/Model/UpdatePowerTaskRequestContentTest.php
 test/Model/UpdatePowerTaskResponseContentTest.php
+test/Model/UpdateSnapshotJobRequestContentTest.php
+test/Model/UpdateSnapshotJobResponseContentTest.php
 test/Model/UpdateSnapshotRequestContentTest.php
 test/Model/UpdateSnapshotResponseContentTest.php
 test/Model/UpdateVpsConfigRequestContentTest.php

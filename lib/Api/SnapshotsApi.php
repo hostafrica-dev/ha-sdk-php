@@ -77,7 +77,16 @@ class SnapshotsApi
         'createSnapshot' => [
             'application/json',
         ],
+        'createSnapshotJob' => [
+            'application/json',
+        ],
         'deleteSnapshot' => [
+            'application/json',
+        ],
+        'deleteSnapshotJob' => [
+            'application/json',
+        ],
+        'listSnapshotJobs' => [
             'application/json',
         ],
         'listSnapshots' => [
@@ -87,6 +96,9 @@ class SnapshotsApi
             'application/json',
         ],
         'updateSnapshot' => [
+            'application/json',
+        ],
+        'updateSnapshotJob' => [
             'application/json',
         ],
     ];
@@ -513,6 +525,381 @@ class SnapshotsApi
     }
 
     /**
+     * Operation createSnapshotJob
+     *
+     * @param  \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent $create_snapshot_job_request_content create_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HostAfrica\SDK\Model\CreateSnapshotJobResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
+     */
+    public function createSnapshotJob($create_snapshot_job_request_content, string $contentType = self::contentTypes['createSnapshotJob'][0])
+    {
+        list($response) = $this->createSnapshotJobWithHttpInfo($create_snapshot_job_request_content, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation createSnapshotJobWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent $create_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HostAfrica\SDK\Model\CreateSnapshotJobResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createSnapshotJobWithHttpInfo($create_snapshot_job_request_content, string $contentType = self::contentTypes['createSnapshotJob'][0])
+    {
+        $request = $this->createSnapshotJobRequest($create_snapshot_job_request_content, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\CreateSnapshotJobResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HostAfrica\SDK\Model\CreateSnapshotJobResponseContent',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\CreateSnapshotJobResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createSnapshotJobAsync
+     *
+     * @param  \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent $create_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSnapshotJobAsync($create_snapshot_job_request_content, string $contentType = self::contentTypes['createSnapshotJob'][0])
+    {
+        return $this->createSnapshotJobAsyncWithHttpInfo($create_snapshot_job_request_content, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createSnapshotJobAsyncWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent $create_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createSnapshotJobAsyncWithHttpInfo($create_snapshot_job_request_content, string $contentType = self::contentTypes['createSnapshotJob'][0])
+    {
+        $returnType = '\HostAfrica\SDK\Model\CreateSnapshotJobResponseContent';
+        $request = $this->createSnapshotJobRequest($create_snapshot_job_request_content, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createSnapshotJob'
+     *
+     * @param  \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent $create_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['createSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function createSnapshotJobRequest($create_snapshot_job_request_content, string $contentType = self::contentTypes['createSnapshotJob'][0])
+    {
+
+        // verify the required parameter 'create_snapshot_job_request_content' is set
+        if ($create_snapshot_job_request_content === null || (is_array($create_snapshot_job_request_content) && count($create_snapshot_job_request_content) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $create_snapshot_job_request_content when calling createSnapshotJob'
+            );
+        }
+
+
+        $resourcePath = '/vps/create-snapshot-job';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($create_snapshot_job_request_content)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($create_snapshot_job_request_content));
+            } else {
+                $httpBody = $create_snapshot_job_request_content;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteSnapshot
      *
      * @param  \HostAfrica\SDK\Model\DeleteSnapshotRequestContent $delete_snapshot_request_content delete_snapshot_request_content (required)
@@ -836,6 +1223,756 @@ class SnapshotsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_snapshot_request_content));
             } else {
                 $httpBody = $delete_snapshot_request_content;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteSnapshotJob
+     *
+     * @param  \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent $delete_snapshot_job_request_content delete_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
+     */
+    public function deleteSnapshotJob($delete_snapshot_job_request_content, string $contentType = self::contentTypes['deleteSnapshotJob'][0])
+    {
+        list($response) = $this->deleteSnapshotJobWithHttpInfo($delete_snapshot_job_request_content, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation deleteSnapshotJobWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent $delete_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteSnapshotJobWithHttpInfo($delete_snapshot_job_request_content, string $contentType = self::contentTypes['deleteSnapshotJob'][0])
+    {
+        $request = $this->deleteSnapshotJobRequest($delete_snapshot_job_request_content, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteSnapshotJobAsync
+     *
+     * @param  \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent $delete_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteSnapshotJobAsync($delete_snapshot_job_request_content, string $contentType = self::contentTypes['deleteSnapshotJob'][0])
+    {
+        return $this->deleteSnapshotJobAsyncWithHttpInfo($delete_snapshot_job_request_content, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteSnapshotJobAsyncWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent $delete_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteSnapshotJobAsyncWithHttpInfo($delete_snapshot_job_request_content, string $contentType = self::contentTypes['deleteSnapshotJob'][0])
+    {
+        $returnType = '\HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent';
+        $request = $this->deleteSnapshotJobRequest($delete_snapshot_job_request_content, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteSnapshotJob'
+     *
+     * @param  \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent $delete_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['deleteSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function deleteSnapshotJobRequest($delete_snapshot_job_request_content, string $contentType = self::contentTypes['deleteSnapshotJob'][0])
+    {
+
+        // verify the required parameter 'delete_snapshot_job_request_content' is set
+        if ($delete_snapshot_job_request_content === null || (is_array($delete_snapshot_job_request_content) && count($delete_snapshot_job_request_content) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $delete_snapshot_job_request_content when calling deleteSnapshotJob'
+            );
+        }
+
+
+        $resourcePath = '/vps/delete-snapshot-job';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($delete_snapshot_job_request_content)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($delete_snapshot_job_request_content));
+            } else {
+                $httpBody = $delete_snapshot_job_request_content;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation listSnapshotJobs
+     *
+     * @param  \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent $list_snapshot_jobs_request_content list_snapshot_jobs_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapshotJobs'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HostAfrica\SDK\Model\ListSnapshotJobsResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
+     */
+    public function listSnapshotJobs($list_snapshot_jobs_request_content, string $contentType = self::contentTypes['listSnapshotJobs'][0])
+    {
+        list($response) = $this->listSnapshotJobsWithHttpInfo($list_snapshot_jobs_request_content, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listSnapshotJobsWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent $list_snapshot_jobs_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapshotJobs'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HostAfrica\SDK\Model\ListSnapshotJobsResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listSnapshotJobsWithHttpInfo($list_snapshot_jobs_request_content, string $contentType = self::contentTypes['listSnapshotJobs'][0])
+    {
+        $request = $this->listSnapshotJobsRequest($list_snapshot_jobs_request_content, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ListSnapshotJobsResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HostAfrica\SDK\Model\ListSnapshotJobsResponseContent',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ListSnapshotJobsResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listSnapshotJobsAsync
+     *
+     * @param  \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent $list_snapshot_jobs_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapshotJobs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSnapshotJobsAsync($list_snapshot_jobs_request_content, string $contentType = self::contentTypes['listSnapshotJobs'][0])
+    {
+        return $this->listSnapshotJobsAsyncWithHttpInfo($list_snapshot_jobs_request_content, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listSnapshotJobsAsyncWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent $list_snapshot_jobs_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapshotJobs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listSnapshotJobsAsyncWithHttpInfo($list_snapshot_jobs_request_content, string $contentType = self::contentTypes['listSnapshotJobs'][0])
+    {
+        $returnType = '\HostAfrica\SDK\Model\ListSnapshotJobsResponseContent';
+        $request = $this->listSnapshotJobsRequest($list_snapshot_jobs_request_content, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listSnapshotJobs'
+     *
+     * @param  \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent $list_snapshot_jobs_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listSnapshotJobs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listSnapshotJobsRequest($list_snapshot_jobs_request_content, string $contentType = self::contentTypes['listSnapshotJobs'][0])
+    {
+
+        // verify the required parameter 'list_snapshot_jobs_request_content' is set
+        if ($list_snapshot_jobs_request_content === null || (is_array($list_snapshot_jobs_request_content) && count($list_snapshot_jobs_request_content) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $list_snapshot_jobs_request_content when calling listSnapshotJobs'
+            );
+        }
+
+
+        $resourcePath = '/vps/list-snapshot-jobs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($list_snapshot_jobs_request_content)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($list_snapshot_jobs_request_content));
+            } else {
+                $httpBody = $list_snapshot_jobs_request_content;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1961,6 +3098,381 @@ class SnapshotsApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_snapshot_request_content));
             } else {
                 $httpBody = $update_snapshot_request_content;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires Bearer authentication (access token)
+        if (!empty($this->config->getAccessToken())) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateSnapshotJob
+     *
+     * @param  \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent $update_snapshot_job_request_content update_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent
+     */
+    public function updateSnapshotJob($update_snapshot_job_request_content, string $contentType = self::contentTypes['updateSnapshotJob'][0])
+    {
+        list($response) = $this->updateSnapshotJobWithHttpInfo($update_snapshot_job_request_content, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation updateSnapshotJobWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent $update_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \HostAfrica\SDK\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent|\HostAfrica\SDK\Model\BadRequestErrorResponseContent|\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent|\HostAfrica\SDK\Model\ForbiddenErrorResponseContent|\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent|\HostAfrica\SDK\Model\ValidationErrorResponseContent|\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent|\HostAfrica\SDK\Model\InternalServiceErrorResponseContent|\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateSnapshotJobWithHttpInfo($update_snapshot_job_request_content, string $contentType = self::contentTypes['updateSnapshotJob'][0])
+    {
+        $request = $this->updateSnapshotJobRequest($update_snapshot_job_request_content, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 404:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 422:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\BadRequestErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\UnauthorizedErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ForbiddenErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ResourceNotFoundErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ValidationErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\TooManyRequestsErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\InternalServiceErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\HostAfrica\SDK\Model\ServiceUnavailableErrorResponseContent',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateSnapshotJobAsync
+     *
+     * @param  \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent $update_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSnapshotJobAsync($update_snapshot_job_request_content, string $contentType = self::contentTypes['updateSnapshotJob'][0])
+    {
+        return $this->updateSnapshotJobAsyncWithHttpInfo($update_snapshot_job_request_content, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateSnapshotJobAsyncWithHttpInfo
+     *
+     * @param  \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent $update_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateSnapshotJobAsyncWithHttpInfo($update_snapshot_job_request_content, string $contentType = self::contentTypes['updateSnapshotJob'][0])
+    {
+        $returnType = '\HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent';
+        $request = $this->updateSnapshotJobRequest($update_snapshot_job_request_content, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateSnapshotJob'
+     *
+     * @param  \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent $update_snapshot_job_request_content (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['updateSnapshotJob'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function updateSnapshotJobRequest($update_snapshot_job_request_content, string $contentType = self::contentTypes['updateSnapshotJob'][0])
+    {
+
+        // verify the required parameter 'update_snapshot_job_request_content' is set
+        if ($update_snapshot_job_request_content === null || (is_array($update_snapshot_job_request_content) && count($update_snapshot_job_request_content) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $update_snapshot_job_request_content when calling updateSnapshotJob'
+            );
+        }
+
+
+        $resourcePath = '/vps/update-snapshot-job';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($update_snapshot_job_request_content)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_snapshot_job_request_content));
+            } else {
+                $httpBody = $update_snapshot_job_request_content;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

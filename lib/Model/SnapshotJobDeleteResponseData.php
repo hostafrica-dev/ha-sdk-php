@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContent
+ * SnapshotJobDeleteResponseData
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \HostAfrica\SDK\ObjectSerializer;
 
 /**
- * CreateSnapshotRequestContent Class Doc Comment
+ * SnapshotJobDeleteResponseData Class Doc Comment
  *
  * @category Class
+ * @description Response data for snapshot job delete operation
  * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
+class SnapshotJobDeleteResponseData implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateSnapshotRequestContent';
+    protected static $openAPIModelName = 'SnapshotJobDeleteResponseData';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'service_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'include_ram' => 'bool'
+        'message' => 'string',
+        'limits' => '\HostAfrica\SDK\Model\SnapshotJobLimits'
     ];
 
     /**
@@ -71,10 +70,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'service_id' => null,
-        'name' => null,
-        'description' => null,
-        'include_ram' => null
+        'message' => null,
+        'limits' => null
     ];
 
     /**
@@ -83,10 +80,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'service_id' => false,
-        'name' => false,
-        'description' => false,
-        'include_ram' => false
+        'message' => false,
+        'limits' => false
     ];
 
     /**
@@ -175,10 +170,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'name' => 'name',
-        'description' => 'description',
-        'include_ram' => 'include_ram'
+        'message' => 'message',
+        'limits' => 'limits'
     ];
 
     /**
@@ -187,10 +180,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'include_ram' => 'setIncludeRam'
+        'message' => 'setMessage',
+        'limits' => 'setLimits'
     ];
 
     /**
@@ -199,10 +190,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'include_ram' => 'getIncludeRam'
+        'message' => 'getMessage',
+        'limits' => 'getLimits'
     ];
 
     /**
@@ -262,10 +251,8 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('service_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('include_ram', $data ?? [], null);
+        $this->setIfExists('message', $data ?? [], null);
+        $this->setIfExists('limits', $data ?? [], null);
     }
 
     /**
@@ -295,11 +282,11 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['service_id'] === null) {
-            $invalidProperties[] = "'service_id' can't be null";
+        if ($this->container['message'] === null) {
+            $invalidProperties[] = "'message' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['limits'] === null) {
+            $invalidProperties[] = "'limits' can't be null";
         }
         return $invalidProperties;
     }
@@ -317,109 +304,55 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets service_id
+     * Gets message
      *
      * @return string
      */
-    public function getServiceId()
+    public function getMessage()
     {
-        return $this->container['service_id'];
+        return $this->container['message'];
     }
 
     /**
-     * Sets service_id
+     * Sets message
      *
-     * @param string $service_id Service ID - must be sent as a string
+     * @param string $message Status message indicating the result
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setMessage($message)
     {
-        if (is_null($service_id)) {
-            throw new \InvalidArgumentException('non-nullable service_id cannot be null');
+        if (is_null($message)) {
+            throw new \InvalidArgumentException('non-nullable message cannot be null');
         }
-        $this->container['service_id'] = $service_id;
+        $this->container['message'] = $message;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets limits
      *
-     * @return string
+     * @return \HostAfrica\SDK\Model\SnapshotJobLimits
      */
-    public function getName()
+    public function getLimits()
     {
-        return $this->container['name'];
+        return $this->container['limits'];
     }
 
     /**
-     * Sets name
+     * Sets limits
      *
-     * @param string $name Name for the snapshot
+     * @param \HostAfrica\SDK\Model\SnapshotJobLimits $limits limits
      *
      * @return self
      */
-    public function setName($name)
+    public function setLimits($limits)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($limits)) {
+            throw new \InvalidArgumentException('non-nullable limits cannot be null');
         }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Description for the snapshot
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_ram
-     *
-     * @return bool|null
-     */
-    public function getIncludeRam()
-    {
-        return $this->container['include_ram'];
-    }
-
-    /**
-     * Sets include_ram
-     *
-     * @param bool|null $include_ram Whether to include RAM state in the snapshot. Defaults to false when omitted.
-     *
-     * @return self
-     */
-    public function setIncludeRam($include_ram)
-    {
-        if (is_null($include_ram)) {
-            throw new \InvalidArgumentException('non-nullable include_ram cannot be null');
-        }
-        $this->container['include_ram'] = $include_ram;
+        $this->container['limits'] = $limits;
 
         return $this;
     }

@@ -7,10 +7,14 @@ All URIs are relative to https://api.hostafrica.com, except if the operation def
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
 | [**createSnapshot()**](SnapshotsApi.md#createSnapshot) | **POST** /vps/create-snapshot |  |
+| [**createSnapshotJob()**](SnapshotsApi.md#createSnapshotJob) | **POST** /vps/create-snapshot-job |  |
 | [**deleteSnapshot()**](SnapshotsApi.md#deleteSnapshot) | **POST** /vps/delete-snapshot |  |
+| [**deleteSnapshotJob()**](SnapshotsApi.md#deleteSnapshotJob) | **POST** /vps/delete-snapshot-job |  |
+| [**listSnapshotJobs()**](SnapshotsApi.md#listSnapshotJobs) | **POST** /vps/list-snapshot-jobs |  |
 | [**listSnapshots()**](SnapshotsApi.md#listSnapshots) | **POST** /vps/list-snapshots |  |
 | [**rollbackSnapshot()**](SnapshotsApi.md#rollbackSnapshot) | **POST** /vps/rollback-snapshot |  |
 | [**updateSnapshot()**](SnapshotsApi.md#updateSnapshot) | **POST** /vps/update-snapshot |  |
+| [**updateSnapshotJob()**](SnapshotsApi.md#updateSnapshotJob) | **POST** /vps/update-snapshot-job |  |
 
 
 ## `createSnapshot()`
@@ -73,6 +77,66 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `createSnapshotJob()`
+
+```php
+createSnapshotJob($create_snapshot_job_request_content): \HostAfrica\SDK\Model\CreateSnapshotJobResponseContent
+```
+
+
+
+[Under development] Creates a new snapshot job for a VPS service. Use period='hourly' with run_every, or period='daily' with days and start_time.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BearerAuth
+$config = HostAfrica\SDK\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new HostAfrica\SDK\Api\SnapshotsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$create_snapshot_job_request_content = new \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent(); // \HostAfrica\SDK\Model\CreateSnapshotJobRequestContent
+
+try {
+    $result = $apiInstance->createSnapshotJob($create_snapshot_job_request_content);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SnapshotsApi->createSnapshotJob: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_snapshot_job_request_content** | [**\HostAfrica\SDK\Model\CreateSnapshotJobRequestContent**](../Model/CreateSnapshotJobRequestContent.md)|  | |
+
+### Return type
+
+[**\HostAfrica\SDK\Model\CreateSnapshotJobResponseContent**](../Model/CreateSnapshotJobResponseContent.md)
+
+### Authorization
+
+[BearerAuth](../../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `deleteSnapshot()`
 
 ```php
@@ -119,6 +183,126 @@ try {
 ### Return type
 
 [**\HostAfrica\SDK\Model\DeleteSnapshotResponseContent**](../Model/DeleteSnapshotResponseContent.md)
+
+### Authorization
+
+[BearerAuth](../../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteSnapshotJob()`
+
+```php
+deleteSnapshotJob($delete_snapshot_job_request_content): \HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent
+```
+
+
+
+[Under development]Deletes a snapshot job from a VPS service
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BearerAuth
+$config = HostAfrica\SDK\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new HostAfrica\SDK\Api\SnapshotsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$delete_snapshot_job_request_content = new \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent(); // \HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent
+
+try {
+    $result = $apiInstance->deleteSnapshotJob($delete_snapshot_job_request_content);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SnapshotsApi->deleteSnapshotJob: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **delete_snapshot_job_request_content** | [**\HostAfrica\SDK\Model\DeleteSnapshotJobRequestContent**](../Model/DeleteSnapshotJobRequestContent.md)|  | |
+
+### Return type
+
+[**\HostAfrica\SDK\Model\DeleteSnapshotJobResponseContent**](../Model/DeleteSnapshotJobResponseContent.md)
+
+### Authorization
+
+[BearerAuth](../../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `listSnapshotJobs()`
+
+```php
+listSnapshotJobs($list_snapshot_jobs_request_content): \HostAfrica\SDK\Model\ListSnapshotJobsResponseContent
+```
+
+
+
+[Under development]Retrieves the list of snapshot jobs for a VPS service
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BearerAuth
+$config = HostAfrica\SDK\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new HostAfrica\SDK\Api\SnapshotsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$list_snapshot_jobs_request_content = new \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent(); // \HostAfrica\SDK\Model\ListSnapshotJobsRequestContent
+
+try {
+    $result = $apiInstance->listSnapshotJobs($list_snapshot_jobs_request_content);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SnapshotsApi->listSnapshotJobs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **list_snapshot_jobs_request_content** | [**\HostAfrica\SDK\Model\ListSnapshotJobsRequestContent**](../Model/ListSnapshotJobsRequestContent.md)|  | |
+
+### Return type
+
+[**\HostAfrica\SDK\Model\ListSnapshotJobsResponseContent**](../Model/ListSnapshotJobsResponseContent.md)
 
 ### Authorization
 
@@ -201,7 +385,7 @@ rollbackSnapshot($rollback_snapshot_request_content): \HostAfrica\SDK\Model\Roll
 
 
 
-[Under development] Rolls back a VPS to a previous snapshot state
+Rolls back a VPS to a previous snapshot state
 
 ### Example
 
@@ -299,6 +483,66 @@ try {
 ### Return type
 
 [**\HostAfrica\SDK\Model\UpdateSnapshotResponseContent**](../Model/UpdateSnapshotResponseContent.md)
+
+### Authorization
+
+[BearerAuth](../../README.md#BearerAuth)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `updateSnapshotJob()`
+
+```php
+updateSnapshotJob($update_snapshot_job_request_content): \HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent
+```
+
+
+
+[Under development] Updates an existing snapshot job. Only provide fields you want to change.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure Bearer authorization: BearerAuth
+$config = HostAfrica\SDK\Configuration::getDefaultConfiguration()->setAccessToken('YOUR_ACCESS_TOKEN');
+
+
+$apiInstance = new HostAfrica\SDK\Api\SnapshotsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$update_snapshot_job_request_content = new \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent(); // \HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent
+
+try {
+    $result = $apiInstance->updateSnapshotJob($update_snapshot_job_request_content);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SnapshotsApi->updateSnapshotJob: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **update_snapshot_job_request_content** | [**\HostAfrica\SDK\Model\UpdateSnapshotJobRequestContent**](../Model/UpdateSnapshotJobRequestContent.md)|  | |
+
+### Return type
+
+[**\HostAfrica\SDK\Model\UpdateSnapshotJobResponseContent**](../Model/UpdateSnapshotJobResponseContent.md)
 
 ### Authorization
 

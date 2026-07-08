@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContentTest
+ * SnapshotJobLimitsTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace HostAfrica\SDK\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateSnapshotRequestContentTest Class Doc Comment
+ * SnapshotJobLimitsTest Class Doc Comment
  *
  * @category    Class
- * @description CreateSnapshotRequestContent
+ * @description Limits and quota information for snapshot jobs
  * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateSnapshotRequestContentTest extends TestCase
+class SnapshotJobLimitsTest extends TestCase
 {
 
     /**
@@ -71,45 +71,36 @@ class CreateSnapshotRequestContentTest extends TestCase
     }
 
     /**
-     * Test "CreateSnapshotRequestContent"
+     * Test "SnapshotJobLimits"
      */
-    public function testCreateSnapshotRequestContent()
+    public function testSnapshotJobLimits()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "service_id"
+     * Test attribute "max_jobs"
      */
-    public function testPropertyServiceId()
+    public function testPropertyMaxJobs()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "job_count"
      */
-    public function testPropertyName()
+    public function testPropertyJobCount()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "description"
+     * Test attribute "can_add_more"
      */
-    public function testPropertyDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "include_ram"
-     */
-    public function testPropertyIncludeRam()
+    public function testPropertyCanAddMore()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

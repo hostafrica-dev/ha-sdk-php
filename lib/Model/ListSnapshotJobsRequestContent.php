@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContent
+ * ListSnapshotJobsRequestContent
  *
  * PHP version 8.1
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \HostAfrica\SDK\ObjectSerializer;
 
 /**
- * CreateSnapshotRequestContent Class Doc Comment
+ * ListSnapshotJobsRequestContent Class Doc Comment
  *
  * @category Class
  * @package  HostAfrica\SDK
@@ -40,7 +40,7 @@ use \HostAfrica\SDK\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
+class ListSnapshotJobsRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateSnapshotRequestContent';
+    protected static $openAPIModelName = 'ListSnapshotJobsRequestContent';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +57,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'service_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'include_ram' => 'bool'
+        'service_id' => 'string'
     ];
 
     /**
@@ -71,10 +68,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'service_id' => null,
-        'name' => null,
-        'description' => null,
-        'include_ram' => null
+        'service_id' => null
     ];
 
     /**
@@ -83,10 +77,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'service_id' => false,
-        'name' => false,
-        'description' => false,
-        'include_ram' => false
+        'service_id' => false
     ];
 
     /**
@@ -175,10 +166,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'name' => 'name',
-        'description' => 'description',
-        'include_ram' => 'include_ram'
+        'service_id' => 'service_id'
     ];
 
     /**
@@ -187,10 +175,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'include_ram' => 'setIncludeRam'
+        'service_id' => 'setServiceId'
     ];
 
     /**
@@ -199,10 +184,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'include_ram' => 'getIncludeRam'
+        'service_id' => 'getServiceId'
     ];
 
     /**
@@ -263,9 +245,6 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('service_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('include_ram', $data ?? [], null);
     }
 
     /**
@@ -297,9 +276,6 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
 
         if ($this->container['service_id'] === null) {
             $invalidProperties[] = "'service_id' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
         }
         return $invalidProperties;
     }
@@ -339,87 +315,6 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
             throw new \InvalidArgumentException('non-nullable service_id cannot be null');
         }
         $this->container['service_id'] = $service_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name Name for the snapshot
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Description for the snapshot
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_ram
-     *
-     * @return bool|null
-     */
-    public function getIncludeRam()
-    {
-        return $this->container['include_ram'];
-    }
-
-    /**
-     * Sets include_ram
-     *
-     * @param bool|null $include_ram Whether to include RAM state in the snapshot. Defaults to false when omitted.
-     *
-     * @return self
-     */
-    public function setIncludeRam($include_ram)
-    {
-        if (is_null($include_ram)) {
-            throw new \InvalidArgumentException('non-nullable include_ram cannot be null');
-        }
-        $this->container['include_ram'] = $include_ram;
 
         return $this;
     }

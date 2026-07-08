@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContentTest
+ * SnapshotJobListResponseDataTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace HostAfrica\SDK\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateSnapshotRequestContentTest Class Doc Comment
+ * SnapshotJobListResponseDataTest Class Doc Comment
  *
  * @category    Class
- * @description CreateSnapshotRequestContent
+ * @description Response data for snapshot job list operation
  * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateSnapshotRequestContentTest extends TestCase
+class SnapshotJobListResponseDataTest extends TestCase
 {
 
     /**
@@ -71,45 +71,45 @@ class CreateSnapshotRequestContentTest extends TestCase
     }
 
     /**
-     * Test "CreateSnapshotRequestContent"
+     * Test "SnapshotJobListResponseData"
      */
-    public function testCreateSnapshotRequestContent()
+    public function testSnapshotJobListResponseData()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "service_id"
+     * Test attribute "message"
      */
-    public function testPropertyServiceId()
+    public function testPropertyMessage()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "jobs"
      */
-    public function testPropertyName()
+    public function testPropertyJobs()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "description"
+     * Test attribute "limits"
      */
-    public function testPropertyDescription()
+    public function testPropertyLimits()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "include_ram"
+     * Test attribute "allowed_periods"
      */
-    public function testPropertyIncludeRam()
+    public function testPropertyAllowedPeriods()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

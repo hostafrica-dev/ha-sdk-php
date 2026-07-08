@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContentTest
+ * ListSnapshotJobsRequestContentTest
  *
  * PHP version 8.1
  *
@@ -31,15 +31,15 @@ namespace HostAfrica\SDK\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CreateSnapshotRequestContentTest Class Doc Comment
+ * ListSnapshotJobsRequestContentTest Class Doc Comment
  *
  * @category    Class
- * @description CreateSnapshotRequestContent
+ * @description ListSnapshotJobsRequestContent
  * @package     HostAfrica\SDK
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CreateSnapshotRequestContentTest extends TestCase
+class ListSnapshotJobsRequestContentTest extends TestCase
 {
 
     /**
@@ -71,9 +71,9 @@ class CreateSnapshotRequestContentTest extends TestCase
     }
 
     /**
-     * Test "CreateSnapshotRequestContent"
+     * Test "ListSnapshotJobsRequestContent"
      */
-    public function testCreateSnapshotRequestContent()
+    public function testListSnapshotJobsRequestContent()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
@@ -83,33 +83,6 @@ class CreateSnapshotRequestContentTest extends TestCase
      * Test attribute "service_id"
      */
     public function testPropertyServiceId()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "name"
-     */
-    public function testPropertyName()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "description"
-     */
-    public function testPropertyDescription()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "include_ram"
-     */
-    public function testPropertyIncludeRam()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateSnapshotRequestContent
+ * SnapshotJobLimits
  *
  * PHP version 8.1
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \HostAfrica\SDK\ObjectSerializer;
 
 /**
- * CreateSnapshotRequestContent Class Doc Comment
+ * SnapshotJobLimits Class Doc Comment
  *
  * @category Class
+ * @description Limits and quota information for snapshot jobs
  * @package  HostAfrica\SDK
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \JsonSerializable
+class SnapshotJobLimits implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateSnapshotRequestContent';
+    protected static $openAPIModelName = 'SnapshotJobLimits';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,10 +58,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @var string[]
       */
     protected static $openAPITypes = [
-        'service_id' => 'string',
-        'name' => 'string',
-        'description' => 'string',
-        'include_ram' => 'bool'
+        'max_jobs' => 'int',
+        'job_count' => 'int',
+        'can_add_more' => 'bool'
     ];
 
     /**
@@ -71,10 +71,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'service_id' => null,
-        'name' => null,
-        'description' => null,
-        'include_ram' => null
+        'max_jobs' => 'int32',
+        'job_count' => 'int32',
+        'can_add_more' => null
     ];
 
     /**
@@ -83,10 +82,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'service_id' => false,
-        'name' => false,
-        'description' => false,
-        'include_ram' => false
+        'max_jobs' => false,
+        'job_count' => false,
+        'can_add_more' => false
     ];
 
     /**
@@ -175,10 +173,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $attributeMap = [
-        'service_id' => 'service_id',
-        'name' => 'name',
-        'description' => 'description',
-        'include_ram' => 'include_ram'
+        'max_jobs' => 'max_jobs',
+        'job_count' => 'job_count',
+        'can_add_more' => 'can_add_more'
     ];
 
     /**
@@ -187,10 +184,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $setters = [
-        'service_id' => 'setServiceId',
-        'name' => 'setName',
-        'description' => 'setDescription',
-        'include_ram' => 'setIncludeRam'
+        'max_jobs' => 'setMaxJobs',
+        'job_count' => 'setJobCount',
+        'can_add_more' => 'setCanAddMore'
     ];
 
     /**
@@ -199,10 +195,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      * @var string[]
      */
     protected static $getters = [
-        'service_id' => 'getServiceId',
-        'name' => 'getName',
-        'description' => 'getDescription',
-        'include_ram' => 'getIncludeRam'
+        'max_jobs' => 'getMaxJobs',
+        'job_count' => 'getJobCount',
+        'can_add_more' => 'getCanAddMore'
     ];
 
     /**
@@ -262,10 +257,9 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('service_id', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('include_ram', $data ?? [], null);
+        $this->setIfExists('max_jobs', $data ?? [], null);
+        $this->setIfExists('job_count', $data ?? [], null);
+        $this->setIfExists('can_add_more', $data ?? [], null);
     }
 
     /**
@@ -295,11 +289,14 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
     {
         $invalidProperties = [];
 
-        if ($this->container['service_id'] === null) {
-            $invalidProperties[] = "'service_id' can't be null";
+        if ($this->container['max_jobs'] === null) {
+            $invalidProperties[] = "'max_jobs' can't be null";
         }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
+        if ($this->container['job_count'] === null) {
+            $invalidProperties[] = "'job_count' can't be null";
+        }
+        if ($this->container['can_add_more'] === null) {
+            $invalidProperties[] = "'can_add_more' can't be null";
         }
         return $invalidProperties;
     }
@@ -317,109 +314,82 @@ class CreateSnapshotRequestContent implements ModelInterface, ArrayAccess, \Json
 
 
     /**
-     * Gets service_id
+     * Gets max_jobs
      *
-     * @return string
+     * @return int
      */
-    public function getServiceId()
+    public function getMaxJobs()
     {
-        return $this->container['service_id'];
+        return $this->container['max_jobs'];
     }
 
     /**
-     * Sets service_id
+     * Sets max_jobs
      *
-     * @param string $service_id Service ID - must be sent as a string
+     * @param int $max_jobs Maximum number of snapshot jobs allowed
      *
      * @return self
      */
-    public function setServiceId($service_id)
+    public function setMaxJobs($max_jobs)
     {
-        if (is_null($service_id)) {
-            throw new \InvalidArgumentException('non-nullable service_id cannot be null');
+        if (is_null($max_jobs)) {
+            throw new \InvalidArgumentException('non-nullable max_jobs cannot be null');
         }
-        $this->container['service_id'] = $service_id;
+        $this->container['max_jobs'] = $max_jobs;
 
         return $this;
     }
 
     /**
-     * Gets name
+     * Gets job_count
      *
-     * @return string
+     * @return int
      */
-    public function getName()
+    public function getJobCount()
     {
-        return $this->container['name'];
+        return $this->container['job_count'];
     }
 
     /**
-     * Sets name
+     * Sets job_count
      *
-     * @param string $name Name for the snapshot
+     * @param int $job_count Current number of snapshot jobs
      *
      * @return self
      */
-    public function setName($name)
+    public function setJobCount($job_count)
     {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($job_count)) {
+            throw new \InvalidArgumentException('non-nullable job_count cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['job_count'] = $job_count;
 
         return $this;
     }
 
     /**
-     * Gets description
+     * Gets can_add_more
      *
-     * @return string|null
+     * @return bool
      */
-    public function getDescription()
+    public function getCanAddMore()
     {
-        return $this->container['description'];
+        return $this->container['can_add_more'];
     }
 
     /**
-     * Sets description
+     * Sets can_add_more
      *
-     * @param string|null $description Description for the snapshot
+     * @param bool $can_add_more Whether more jobs can be added
      *
      * @return self
      */
-    public function setDescription($description)
+    public function setCanAddMore($can_add_more)
     {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
+        if (is_null($can_add_more)) {
+            throw new \InvalidArgumentException('non-nullable can_add_more cannot be null');
         }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets include_ram
-     *
-     * @return bool|null
-     */
-    public function getIncludeRam()
-    {
-        return $this->container['include_ram'];
-    }
-
-    /**
-     * Sets include_ram
-     *
-     * @param bool|null $include_ram Whether to include RAM state in the snapshot. Defaults to false when omitted.
-     *
-     * @return self
-     */
-    public function setIncludeRam($include_ram)
-    {
-        if (is_null($include_ram)) {
-            throw new \InvalidArgumentException('non-nullable include_ram cannot be null');
-        }
-        $this->container['include_ram'] = $include_ram;
+        $this->container['can_add_more'] = $can_add_more;
 
         return $this;
     }
