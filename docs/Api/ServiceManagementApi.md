@@ -22,7 +22,7 @@ cancelVps($cancel_vps_request_content): \HostAfrica\SDK\Model\CancelVpsResponseC
 
 
 
-Cancels a VPS service through WHMCS. This action is irreversible
+Cancels a VPS service. This action is irreversible
 
 ### Example
 

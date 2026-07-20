@@ -26,6 +26,12 @@ class RetryablePaths
         '/vps/validate-pricing' => true,
         '/vps/list-orders' => true,
         '/dns/list-rdns-records' => true,
+        '/domain/check-availability' => true,
+        '/domain/suggest' => true,
+        '/domain/list-domains' => true,
+        '/domain/list-domains-requiring-data' => true,
+        '/domain/get-domain' => true,
+        '/domain/get-domain-contacts' => true,
     ];
 
     public static function isRetryable(string $path): bool

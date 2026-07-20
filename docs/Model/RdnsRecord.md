@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **hostname** | **string** | Final concatenated PTR target (sub.from) |
 **ttl** | **int** | Time-to-live in seconds | [optional]
 **type** | **int** | Zone type: 0&#x3D;OTHER, 1&#x3D;DOMAIN, 2&#x3D;HOSTING, 3&#x3D;ADDON | [optional]
-**relid** | **int** | Related service id (tblhosting.id / tblhostingaddons.id / tbldomains.id) | [optional]
+**relid** | **int** | Related service id for the zone type (hosting, addon, or domain) | [optional]
 **serverid** | **int** |  |
 **clientid** | **int** |  |
 **packageid** | **int** |  |

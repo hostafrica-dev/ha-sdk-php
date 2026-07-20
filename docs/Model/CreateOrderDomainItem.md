@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **line_id** | **int** | Line item identifier |
-**domain_id** | **int** | Domain identifier |
+**domain_id** | **string** | Domain identifier |
 **domain** | **string** | Domain name |
 **type** | **string** | Domain operation type (e.g. register, transfer) |
 **period** | **int** | Registration period in years |

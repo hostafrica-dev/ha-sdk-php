@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pid** | **int** | WHMCS product ID |
+**pid** | **int** | Product ID |
 **billing_cycle** | [**\HostAfrica\SDK\Model\BillingCycle**](BillingCycle.md) |  |
 **plan_id** | **int** | Plan ID for the selected product configuration |
 **hostname** | **string** | Hostname to assign to the service | [optional]
